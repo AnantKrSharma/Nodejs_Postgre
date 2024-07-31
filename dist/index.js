@@ -35,5 +35,24 @@ const createTable = () => __awaiter(void 0, void 0, void 0, function* () {
     catch (error) {
         console.log(error);
     }
+    finally {
+        yield client.end();
+    }
 });
 createTable();
+const insertInTable = (username, email, password) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield client.query(`
+            INSERT INTO users (username, email, password) 
+            VALUES (hi, hi@gmail.com, 123);
+        `);
+        console.log(result);
+    }
+    catch (error) {
+        console.log(error);
+    }
+    finally {
+        yield client.end();
+    }
+});
+insertInTable('aks', 'aks@gmail.com', '1_69420');

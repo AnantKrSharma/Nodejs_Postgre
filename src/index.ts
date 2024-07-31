@@ -22,9 +22,34 @@ const createTable = async () => {
             );    
         `)
         console.log(result);
+
     } catch(error) {
         console.log(error);
+    }
+    finally{
+        await client.end();
     }
 }
 
 createTable();
+
+
+const insertInTable = async (username: string, email: string, password: string) => {
+    try {
+        // await client.connect()
+        
+        const result = await client.query(`
+            INSERT INTO users (username, email, password) 
+            VALUES (hi, hi@gmail.com, 123);
+        `);
+        console.log(result);
+
+    } catch (error) {
+        console.log(error);
+    }    
+    finally{
+        await client.end();
+    }
+}
+
+insertInTable('aks', 'aks@gmail.com', '1_69420')
